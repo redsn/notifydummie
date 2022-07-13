@@ -25,9 +25,17 @@ router.get('/notes', (req,res) => {
 });
 
 //New
+router.get('/notes/new', (req,res) =>{
+    res.render('notes/new.ejs');
+})
 //Delete
 //Update
 //Create
+router.post('/notes', (req,res) => {
+    Note.create(req.body, (err, newNote) => {
+        res.redirect('/notes');
+    })
+})
 //Edit
 //Show
 

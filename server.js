@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const notesRouter = require('./controllers/notes');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 // Initialize express app
 const app = express();
@@ -17,6 +18,8 @@ mongoose.connection.on('connected', () => {
 });
 
 // mount middleware
+app.use(express.urlencoded({extended: false}));
+app.use(morgan('dev'));
 
 // mount routes
 app.get('/', (req,res) => {
@@ -24,7 +27,7 @@ app.get('/', (req,res) => {
 });
 
 app.use('/', notesRouter);
-
+//app.use('/notes', notesRouter) =>>>> in notes.ejs controlloer change all "/notes" to "/";
 
 // tell the app to listen to requests from the client
 const PORT = 3015;
