@@ -12,6 +12,10 @@
     <li>
         <ul><%= create %></ul>
     </li>
+    
     <a href="<%=id%>/edit">to edit</a>
+    <form action="/notes/<%=id%>?_method=DELETE" method="post">
+        <input type="submit" value="Delete This Entry">
+    </form>
 </body>
 </html>

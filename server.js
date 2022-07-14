@@ -19,7 +19,7 @@ mongoose.connection.on('connected', () => {
 
 // mount middleware
 app.use(express.urlencoded({extended: false}));
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 
 // mount routes
 app.get('/', (req,res) => {
